@@ -11,5 +11,5 @@
 - name: setup cron for ddns
   cron:
     name: "renew dynamic DNS IP"
-    minute: "/10"
+    minute: "*/10"
     job: "/usr/local/bin/ddns.sh"
