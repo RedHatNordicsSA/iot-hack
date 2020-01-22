@@ -1,0 +1,15 @@
+---
+
+- name: write out ddns.sh file
+  template:
+    src: ddns.sh.j2
+    dest: /usr/local/bin/ddns.sh
+    owner: bin
+    group: wheel
+    mode: '0644'
+
+- name: setup cron for ddns
+  cron:
+    name: "renew dynamic DNS IP"
+    minute: "/10"
+    job: "/usr/local/bin/ddns.sh"

@@ -3,5 +3,7 @@
   hosts: all
   tasks:
   - include_role:
-      name: common-packages
+    name: common-packages
+  - include_role:
+    name: ddns
 
