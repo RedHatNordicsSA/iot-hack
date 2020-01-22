@@ -4,9 +4,9 @@
   template:
     src: ddns.sh.j2
     dest: /usr/local/bin/ddns.sh
-    owner: bin
-    group: wheel
-    mode: '0644'
+    owner: root
+    group: root
+    mode: '0700'
 
 - name: setup cron for ddns
   cron:
