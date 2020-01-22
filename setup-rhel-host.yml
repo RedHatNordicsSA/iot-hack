@@ -8,4 +8,6 @@
       name: aws_config
   - include_role:
       name: ddns
+  - include_role:
+      name: cockpit
 

@@ -1,0 +1,45 @@
+---
+
+- name: Install cockpit -server web interface
+  vars:
+    pkgs:
+      - cockpit
+      - cockpit-ws
+      - cockpit-bridge
+      - cockpit-shell
+      - cockpit-storaged
+      - cockpit-docker
+      - cockpit-machines
+      - cockpit-packagekit
+      - cockpit-system
+      - cockpit-pcp
+      - subscription-manager-cockpit
+  package: name="{{ pkgs }}" state=present
+
+- name: Firewall allow cockpit
+  firewalld: service=cockpit state=enabled permanent=yes immediate=yes
+
+- name: Lets encrypt cockpit
+  block:
+
+    - command: /usr/local/bin/certbot certonly --dns-route53 -d "{{ cockpit_fqdn }}"
+      args:
+        creates: "/etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem"
+      register: certbot_create
+
+    - command:  "cat /etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem /etc/letsencrypt/live/{{ cockpit_fqdn }}/privkey.pem > /etc/cockpit/ws-certs.d/1-{{ cockpit_fqdn }}.cert"
+      when: certbot_create.changed
+
+    - cron:
+        name: "renew certbot certs"
+        minute: "20"
+        hour: "02"
+        weekday: "2"
+        job: "/usr/local/bin/certbot renew &> /dev/null && cat /etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem /etc/letsencrypt/live/{{ cockpit_fqdn }}/privkey.pem > /etc/cockpit/ws-certs.d/1-{{ cockpit_fqdn }}.cert"
+
+  when:
+    - aws_access_key_id is defined
+    - aws_secret_access_key is defined
+
+- name: enable cockpit
+  service: name=cockpit.socket state=started enabled=true
