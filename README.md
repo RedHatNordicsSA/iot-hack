@@ -42,6 +42,23 @@ It is highly encouraged to make use of available technology, including but not l
 
 And of course any software you feel like using there! For example we have [Node-Red](https://nodered.org/) installed for easy data flow management.
 
+# Suggestions for tasks
+
+It is up to your imagination to come up with hacks you like to do. Here are some suggestions
+
+* build safe messaging back and forth from sensors to cloud backend
+* secure the connections with API gateway using authentication and rate-limits
+* utilise decision manager to follow rules related to events from GUI or devices
+* utilise Node-Red to build quick user panel, and REST API data handling
+* SSO for user auth
+* OpenShift pipelines to build your app, and store the images
+* Ansible tower to automate provisioning stuff to remote RHEL
+* Quarcus and UBI minimal container for building lean and mean application images
+* Dare to go already serverless with Knative?
+
+![suggestion for application architecture](pics/tasks.png)
+
+
 # Instructions
 
 * TBD [Description of OpenShift resources](./)

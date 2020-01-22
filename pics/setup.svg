@@ -17,7 +17,7 @@
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="setup.svg"
-   inkscape:export-filename="/home/itengval/src/iot-hack/pics/setup.png"
+   inkscape:export-filename="/home/itengval/src/iot-hack/pics/tasks.png"
    inkscape:export-xdpi="68.459045"
    inkscape:export-ydpi="68.459045">
   <defs
@@ -80,10 +80,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.0369147"
-     inkscape:cx="545.34725"
-     inkscape:cy="396.85039"
+     inkscape:cx="571.38604"
+     inkscape:cy="381.41999"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer4"
+     inkscape:current-layer="layer5"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1016"
@@ -122,7 +122,7 @@
          inkscape:connector-curvature="0" />
     </g>
     <rect
-       style="fill:#ffffff;stroke:#000000;stroke-width:0.26458332"
+       style="fill:#ffffff;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect14"
        width="77.361099"
        height="32.520401"
@@ -180,7 +180,7 @@
        sodipodi:nodetypes="csc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.76729167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 251.44919,131.89999 0.82944,43.05393"
+       d="m 251.45767,131.89999 0.82324,43.05393"
        id="path5003"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="3"
@@ -293,7 +293,7 @@
          r="6.1981378" />
     </g>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.52916673;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:0.52916673,0.52916673;stroke-dashoffset:0"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52916673, 0.52916673;stroke-dashoffset:0;stroke-opacity:1"
        d="m 232.08259,220.5293 2.4159,-5.55006"
        id="path6743"
        inkscape:connector-type="polyline"
@@ -301,19 +301,28 @@
        inkscape:connection-start="#g6736"
        inkscape:connection-end="#rect6536" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.52916673;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52916673,0.52916673;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.52916676;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.52916673, 0.52916673;stroke-dashoffset:0;stroke-opacity:1"
        d="m 274.22563,220.50052 -1.81648,-5.52128"
        id="path6745"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:connection-start="#g6741"
        inkscape:connection-end="#rect6620" />
+    <rect
+       style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.26458332"
+       id="rect5083"
+       width="73.995735"
+       height="10.889046"
+       x="9.9631252"
+       y="75.147255"
+       ry="2.7775135"
+       transform="rotate(-0.47327402,10532.386,43.506677)" />
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="logos"
-     style="display:inline">
+     style="display:none">
     <g
        id="g173"
        transform="matrix(0.06500296,0,0,0.06500296,220.21299,95.928459)">
@@ -490,11 +499,23 @@
          inkscape:connector-curvature="0"
          style="fill:#cc0000" />
     </g>
+    <text
+       id="text5087"
+       y="82.03392"
+       x="37.930588"
+       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       xml:space="preserve"><tspan
+         style="font-size:5.64444447px;stroke-width:0.26458332"
+         y="82.03392"
+         x="37.930588"
+         id="tspan5085"
+         sodipodi:role="line">CI / CD</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
      id="layer3"
-     inkscape:label="containers">
+     inkscape:label="containers"
+     style="display:none">
     <g
        id="g5546"
        transform="translate(0.52916667)">
@@ -520,26 +541,6 @@
            id="tspan5079"
            sodipodi:role="line">API GW</tspan></text>
     </g>
-    <rect
-       style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.26458332"
-       id="rect5083"
-       width="73.995735"
-       height="10.889046"
-       x="9.9631252"
-       y="75.147255"
-       ry="2.7775135"
-       transform="rotate(-0.473274)" />
-    <text
-       id="text5087"
-       y="82.03392"
-       x="37.930588"
-       style="font-style:normal;font-weight:normal;font-size:5.64444447px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       xml:space="preserve"><tspan
-         style="font-size:5.64444447px;stroke-width:0.26458332"
-         y="82.03392"
-         x="37.930588"
-         id="tspan5085"
-         sodipodi:role="line">CI / CD</tspan></text>
     <g
        id="g5619"
        transform="translate(1.5875)">
@@ -805,11 +806,6 @@
            id="tspan6991"
            sodipodi:role="line">node-red</tspan></text>
     </g>
-  </g>
-  <g
-     inkscape:groupmode="layer"
-     id="layer4"
-     inkscape:label="products">
     <g
        id="g6515">
       <rect
@@ -949,6 +945,12 @@
         </g>
       </g>
     </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="products"
+     style="display:none">
     <g
        id="g7272"
        transform="translate(5.216916)">
@@ -1429,4 +1431,179 @@
       </g>
     </g>
   </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="tasks"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="16.866186"
+       y="81.779327"
+       id="text1150"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><tspan
+         sodipodi:role="line"
+         id="tspan1148"
+         x="16.866186"
+         y="81.779327"
+         style="font-size:4.23333311px;stroke-width:0.26458332">build - test - store containers</tspan></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1117"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,-11.482381,-73.742404)"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         id="flowRegion1119"
+         style="font-size:16px"><rect
+           id="rect1121"
+           width="283.39798"
+           height="118.71144"
+           x="90"
+           y="613.70081"
+           style="font-size:16px" /></flowRegion><flowPara
+         id="flowPara1123">* connect apps using services</flowPara><flowPara
+         id="flowPara1127">* expose applications to internet</flowPara><flowPara
+         id="flowPara1129">* integrations and msg queues</flowPara><flowPara
+         id="flowPara1135">* container storage for databases</flowPara><flowPara
+         id="flowPara1153">* utilise config maps+secrets</flowPara><flowPara
+         id="flowPara1155">* network policies for firewalling</flowPara></flowRoot>    <rect
+       ry="5.868773"
+       y="30.083334"
+       x="10.583333"
+       height="43.103741"
+       width="77.361092"
+       id="rect1149"
+       style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045" />
+    <flowRoot
+       transform="matrix(0.26458333,0,0,0.26458333,-11.331671,-129.68988)"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       id="flowRoot1182"
+       xml:space="preserve"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         style="font-size:16px"
+         id="flowRegion1168"><rect
+           style="font-size:16px"
+           y="613.70081"
+           x="90"
+           height="118.71144"
+           width="283.39798"
+           id="rect1166" /></flowRegion><flowPara
+         id="flowPara1174">* integrations and msg queues</flowPara><flowPara
+         id="flowPara1132">  (FUSE/Kafka)</flowPara><flowPara
+         id="flowPara1180">* API GW for security (3Scale)</flowPara><flowPara
+         id="flowPara1134">* Tower for controlling RHEL</flowPara><flowPara
+         id="flowPara1136">* Application runtimes for apps</flowPara><flowPara
+         id="flowPara1138">* Decisions based on input (DM)</flowPara><flowPara
+         id="flowPara1194" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1152"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         id="flowRegion1154"
+         style="font-size:16px"><rect
+           id="rect1156"
+           width="170"
+           height="80"
+           x="590"
+           y="403.70078"
+           style="font-size:16px" /></flowRegion><flowPara
+         id="flowPara1158" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot1181"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,192.57569,-72.236576)"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         id="flowRegion1164"
+         style="font-size:16px"><rect
+           id="rect1162"
+           width="282.15488"
+           height="71.020126"
+           x="90"
+           y="613.70081"
+           style="font-size:16px" /></flowRegion><flowPara
+         id="flowPara1177">* Cockpit+Insights for control</flowPara><flowPara
+         id="flowPara1211">* Everything configured using</flowPara><flowPara
+         id="flowPara1188">  Ansible Tower for auditing</flowPara><flowPara
+         id="flowPara1179" /></flowRoot>    <rect
+       style="display:inline;fill:#ffffff;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1172"
+       width="76.830811"
+       height="40.45792"
+       x="214.3125"
+       y="45.958332"
+       ry="5.868773"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045" />
+    <flowRoot
+       transform="matrix(0.26458333,0,0,0.26458333,191.56142,-114.78222)"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       id="flowRoot1234"
+       xml:space="preserve"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         style="font-size:16px"
+         id="flowRegion1226"><rect
+           style="font-size:16px"
+           y="613.70081"
+           x="90"
+           height="203.02013"
+           width="370.15683"
+           id="rect1224" /></flowRegion><flowPara
+         id="flowPara1230">* Secure via API GW</flowPara><flowPara
+         id="flowPara1154">* Applications delivered as</flowPara><flowPara
+         id="flowPara1232">  containers, run with podman</flowPara><flowPara
+         id="flowPara1166">* minimize using quarkus and</flowPara><flowPara
+         id="flowPara1168">  UBI minimal container images</flowPara><flowPara
+         id="flowPara1170">* Able to do local decisions and</flowPara><flowPara
+         id="flowPara1175">  caching in case of offline</flowPara></flowRoot>    <g
+       id="g1186"
+       transform="translate(2.6458282,-14.370183)"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045">
+      <rect
+         ry="2.6458321"
+         y="28.578516"
+         x="148.16667"
+         height="10.583333"
+         width="18.520834"
+         id="rect1181"
+         style="fill:#ffffff;stroke:#000000;stroke-width:0.26458332;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0" />
+      <text
+         id="text1179"
+         y="35.411175"
+         x="153.4325"
+         style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-size:4.23333311px;stroke-width:0.26458332"
+           y="35.411175"
+           x="153.4325"
+           id="tspan1177"
+           sodipodi:role="line">SSL</tspan></text>
+    </g>
+    <flowRoot
+       transform="matrix(0.26458333,0,0,0.26458333,192.57569,-16.144874)"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       id="flowRoot1203"
+       xml:space="preserve"
+       inkscape:export-xdpi="68.459045"
+       inkscape:export-ydpi="68.459045"><flowRegion
+         style="font-size:16px"
+         id="flowRegion1192"><rect
+           style="font-size:16px"
+           y="613.70081"
+           x="90"
+           height="71.020126"
+           width="282.15488"
+           id="rect1190" /></flowRegion><flowPara
+         id="flowPara1199">* Devices receive commands and</flowPara><flowPara
+         id="flowPara1210">  send status. </flowPara><flowPara
+         id="flowPara1201" /></flowRoot>  </g>
 </svg>
