@@ -3,7 +3,13 @@
 - name: Install basic packages we need
   vars:
     pkgs:
-      - python3
-      - tmux
+    - python3
+    - tmux
   package: name="{{ pkgs }}" state=present
 
+- name: install aws and let's encrypt tools
+  vars:
+    pkgs:
+    - awscli
+    - certbot-dns-route53
+  pip: name="{{ pkgs }}" state=present
