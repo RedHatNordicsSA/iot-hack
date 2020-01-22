@@ -47,3 +47,15 @@ And of course any software you feel like using there! For example we have [Node-
 * TBD [Description of OpenShift resources](./)
 * TBD [Description of controlling RHEL box](./rhel-device/README.md)
 * TBD [Description of moving containers from OCP to RHEL box](./)
+
+# External blogs for ideas and documentation
+
+* Search topics on [Red Hat Developer Blog](https://developers.redhat.com/blog/)
+* [How to Install Red Hat Process Automation Manager 7.5 in Minutes](http://www.schabell.org/2020/01/)how-to-install-red-hat-process-automation-manager-75-in-minutes.html
+* [How to Install Red Hat Decision Manager 7.5 in Minutes](http://www.schabell.org/2020/01/how-to-install-red-hat-decision-manager-75-in-minutes.html)
+
+# Product documentation
+
+[Click here for Red Hat product documentation](https://access.redhat.com/documentation/en-us/).
+
+* <TBD, list of direct links to product documentation>
