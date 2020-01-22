@@ -5,5 +5,7 @@
   - include_role:
     name: common-packages
   - include_role:
+    name: aws_config
+  - include_role:
     name: ddns
 

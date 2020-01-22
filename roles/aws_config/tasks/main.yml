@@ -1,0 +1,17 @@
+---
+
+- name: create aws config dir
+  file:
+    path: /root/.aws
+    state: directory
+    mode: 0600
+
+- name: write out aws config file
+  copy:
+    dest: /root/.aws/config
+    mode: 0600
+    content: |
+      [default]
+      aws_access_key_id={{aws_access_key_id}}
+      aws_secret_access_key={{aws_secret_access_key}}
+
