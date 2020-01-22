@@ -1,0 +1,9 @@
+---
+
+- name: Install basic packages we need
+  vars:
+    pkgs:
+      - python3
+      - tmux
+  package: name="{{ pkgs }}" state=present
+

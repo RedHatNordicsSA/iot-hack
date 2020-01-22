@@ -1,0 +1,7 @@
+---
+- name: basic initialization playbook for rhel host 
+  hosts: all
+  tasks:
+  - include_role:
+      name: common-packages
+
