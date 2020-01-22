@@ -3,9 +3,9 @@
   hosts: all
   tasks:
   - include_role:
-    name: common-packages
+      name: common-packages
   - include_role:
-    name: aws_config
+      name: aws_config
   - include_role:
-    name: ddns
+      name: ddns
 
