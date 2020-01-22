@@ -1,0 +1,7 @@
+---
+
+- name: just ping hosts to check connection
+  hosts: all
+  tasks:
+  - ping:
+
