@@ -6,14 +6,15 @@
       - cockpit
       - cockpit-ws
       - cockpit-bridge
-      - cockpit-shell
       - cockpit-storaged
-      - cockpit-docker
+      - cockpit-podman
       - cockpit-machines
       - cockpit-packagekit
       - cockpit-system
       - cockpit-pcp
       - subscription-manager-cockpit
+      - cockpit-session-recording
+      - cockpit-dashboard
   package: name="{{ pkgs }}" state=present
 
 - name: Firewall allow cockpit
