@@ -28,7 +28,10 @@
         creates: "/etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem"
       register: certbot_create
 
-    - command:  "cat /etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem /etc/letsencrypt/live/{{ cockpit_fqdn }}/privkey.pem > /etc/cockpit/ws-certs.d/1-{{ cockpit_fqdn }}.cert"
+    - name: create cert for letsencrypt
+      shell:
+        cmd: /etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem /etc/letsencrypt/live/{{ cockpit_fqdn }}/privkey.pem > /etc/cockpit/ws-certs.d/1-{{ cockpit_fqdn }}.cert
+        creates: /etc/cockpit/ws-certs.d/1-{{ cockpit_fqdn }}.cert
       when: certbot_create.changed
 
     - cron:
