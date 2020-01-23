@@ -23,7 +23,7 @@
 - name: Lets encrypt cockpit
   block:
 
-    - command: /usr/local/bin/certbot certonly --dns-route53 -d "{{ cockpit_fqdn }}"
+    - command: /usr/local/bin/certbot certonly --dns-route53 -m "{{ letsencrypt_email }}" -d "{{ cockpit_fqdn }}"
       args:
         creates: "/etc/letsencrypt/live/{{ cockpit_fqdn }}/fullchain.pem"
       register: certbot_create
