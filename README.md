@@ -13,8 +13,8 @@ The task depend of course on the audience. During the first event we utilise the
  * Ikea Trådfri lamp (Zigbee)
  * Ikea Trådfri remote controller (Zigbee)
  * Zigbee temperature sensor
- * Bluetooth temperature/humidity sensor
- * Any bluetooth devices nearby?
+ * [Suunto Movesense](https://www.movesense.com/product/movesense-developer-kit-2-0/) bluetooth motion and biometrics sensor developer kit 2.0 :boom: :fire:
+ * Any other bluetooth devices nearby?
  * WLAN network
 
 <TBD, pic here about the devices on the table>
@@ -54,7 +54,7 @@ It is up to your imagination to come up with hacks you like to do. Here are some
 * OpenShift pipelines to build your app, and store the images
 * Ansible tower to automate provisioning stuff to remote RHEL
 * Quarcus and UBI minimal container for building lean and mean application images
-* Dare to go already serverless with Knative?
+* Dare to go already serverless with [Knative](https://developers.redhat.com/coderland/serverless/serverless-knative-intro/?
 
 ![suggestion for application architecture](pics/tasks.png)
 
@@ -70,6 +70,7 @@ It is up to your imagination to come up with hacks you like to do. Here are some
 * Search topics on [Red Hat Developer Blog](https://developers.redhat.com/blog/)
 * [How to Install Red Hat Process Automation Manager 7.5 in Minutes](http://www.schabell.org/2020/01/)how-to-install-red-hat-process-automation-manager-75-in-minutes.html
 * [How to Install Red Hat Decision Manager 7.5 in Minutes](http://www.schabell.org/2020/01/how-to-install-red-hat-decision-manager-75-in-minutes.html)
+* [Knative examples](https://developers.redhat.com/coderland/serverless/serverless-knative-intro/) for serverless designs
 
 # Product documentation
 
