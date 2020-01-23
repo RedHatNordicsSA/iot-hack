@@ -1,4 +1,5 @@
 ---
 
 letsencrypt_email: 
+cockpit_fqdn:
 
