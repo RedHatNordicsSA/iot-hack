@@ -2,12 +2,24 @@
 - name: basic initialization playbook for rhel host 
   hosts: all
   tasks:
-  - include_role:
-      name: common-packages
-  - include_role:
-      name: aws_config
-  - include_role:
-      name: ddns
-  - include_role:
-      name: cockpit
+
+    - name: subscribe to Red Hat
+      redhat_subscription:
+        state: present
+        username: "{{ rhn_user }}"
+        password: "{{ rhn_pass }}"
+        pool: '^Employee SKU$'
+      when: skip_subs is not defined
+
+    - include_role:
+        name: common-packages
+
+    - include_role:
+        name: aws_config
+
+    - include_role:
+        name: ddns
+
+    - include_role:
+        name: cockpit
 
