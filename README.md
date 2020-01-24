@@ -53,7 +53,7 @@ It is up to your imagination to come up with hacks you like to do. Here are some
 * SSO for user auth
 * OpenShift pipelines to build your app, and store the images
 * Ansible tower to automate provisioning stuff to remote RHEL
-* Quarcus and UBI minimal container for building lean and mean application images
+* Quarkus and UBI minimal container for building lean and mean application images
 * Dare to go already serverless with [Knative](https://developers.redhat.com/coderland/serverless/serverless-knative-intro/?
 
 ![suggestion for application architecture](pics/tasks.png)
