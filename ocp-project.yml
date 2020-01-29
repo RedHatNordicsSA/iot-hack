@@ -17,14 +17,15 @@
 # * project_display_name
 # * state present/absent
 #
-# e.g. playbook-create-project.yml -i "localhost ansible_connection=local" \
+# e.g. K8S_AUTH_VERIFY_SSL=no ansible-playbook ocp-project.yml \
+#        -i "localhost ansible_connection=local" \
 #        -c local
 #        -e api_url=https://api.ocp.fi -e user=kube-admin \
-#         -e api_key=SMj1HWD9bJrEnvTR0JLR-EMGeeb_eDsaMnB-92-skno \
+#        -e api_key=SMj1HWD9bJrEnvTR0JLR-EMGeeb_eDsaMnB-92-skno \
 #        -e project_name=ikke -e project_description="ikkes test" \
 #        -e project_display_name=ikke -e state=present
 
-- name: Push application to OCP
+- name: Ensure project in OCP, including default policies.
   hosts: all
   gather_facts: false
   vars:
