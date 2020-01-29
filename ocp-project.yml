@@ -1,11 +1,7 @@
 ---
 #
-# This playbook sets up a project which is locked into some given environment.
-# Consider you have cluster labelled to have three zones, e.g.
-#
-# This playbook sets up a new project. It also creates build stream with given git repo.
-# This utilises OpenShift NetworkPolicy, and isolates the project network
-# from other prjects' networks.
+# This playbook sets up a new project and utilises OpenShift NetworkPolicy,
+# and isolates the project network from other prjects' networks.
 #
 #
 # parameters:
