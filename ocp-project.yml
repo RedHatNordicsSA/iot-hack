@@ -1,0 +1,92 @@
+---
+#
+# This playbook sets up a project which is locked into some given environment.
+# Consider you have cluster labelled to have three zones, e.g.
+#
+# This playbook sets up a new project. It also creates build stream with given git repo.
+# This utilises OpenShift NetworkPolicy, and isolates the project network
+# from other prjects' networks.
+#
+#
+# parameters:
+# * user
+# * api_url
+# * api_key
+# * project_name
+# * project_description
+# * project_display_name
+# * state present/absent
+#
+# e.g. playbook-create-project.yml -i "localhost ansible_connection=local" \
+#        -c local
+#        -e api_url=https://api.ocp.fi -e user=kube-admin \
+#         -e api_key=SMj1HWD9bJrEnvTR0JLR-EMGeeb_eDsaMnB-92-skno \
+#        -e project_name=ikke -e project_description="ikkes test" \
+#        -e project_display_name=ikke -e state=present
+
+- name: Push application to OCP
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+
+    - name: Create a project
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            annotations:
+              openshift.io/description: "{{ project_description }}"
+              openshift.io/display-name: "{{ project_display_name }}"
+            name: "{{ project_name }}"
+
+    - name: Deny all traffic from outside by default
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          apiVersion: v1
+          kind: NetworkPolicy
+          apiVersion: v1
+          metadata:
+            name: allow-from-same-namespace
+            namespace: "{{ project_name }}"
+          spec:
+            podSelector:
+            ingress:
+            - from:
+              - podSelector: {}
+
+    - name: Apply network policy openingns from operations tools
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          apiVersion: v1
+          kind: NetworkPolicy
+          metadata:
+            name: allow-from-system-projects
+            namespace: "{{ project_name }}"
+          spec:
+            podSelector:
+            ingress:
+            - from:
+              - namespaceSelector:
+                  matchLabels:
+                    project: default
+              - namespaceSelector:
+                  matchLabels:
+                    project: openshift-infra
+              # - namespaceSelector:
+              #     matchLabels:
+              #       project: logging
