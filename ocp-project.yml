@@ -1,7 +1,8 @@
 ---
 #
 # This playbook sets up a new project and utilises OpenShift NetworkPolicy,
-# and isolates the project network from other prjects' networks.
+# and isolates the project network from other prjects' networks. It also 
+# sets project admin role to given user.
 #
 #
 # parameters:
@@ -11,6 +12,7 @@
 # * project_name
 # * project_description
 # * project_display_name
+# - project_admin
 # * state present/absent
 #
 # e.g. K8S_AUTH_VERIFY_SSL=no ansible-playbook ocp-project.yml \
@@ -19,7 +21,8 @@
 #        -e api_url=https://api.ocp.fi -e user=kube-admin \
 #        -e api_key=SMj1HWD9bJrEnvTR0JLR-EMGeeb_eDsaMnB-92-skno \
 #        -e project_name=ikke -e project_description="ikkes test" \
-#        -e project_display_name=ikke -e state=present
+#        -e project_display_name=ikke -e project_admin=itengval@redhat.com \
+#        -e project_admin -e state=present
 
 - name: Ensure project in OCP, including default policies.
   hosts: all
@@ -87,3 +90,24 @@
               # - namespaceSelector:
               #     matchLabels:
               #       project: logging
+
+    - name: Bind given user to project admin role
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          kind: RoleBinding
+          apiVersion: rbac.authorization.k8s.io/v1
+          metadata:
+            name: admin
+            namespace: "{{ project_name }}"
+          subjects:
+            - kind: User
+              apiGroup: rbac.authorization.k8s.io
+              name: "{{ project_admin }}"
+          roleRef:
+            apiGroup: rbac.authorization.k8s.io
+            kind: ClusterRole
+            name: admin
