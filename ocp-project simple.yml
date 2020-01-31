@@ -1,0 +1,37 @@
+---
+#
+# This playbook sets up/destroys a project along all it's content.
+#
+#
+# parameters:
+# * user
+# * api_url
+# * api_key
+# * project_name
+# * state present/absent
+#
+# e.g. K8S_AUTH_VERIFY_SSL=no ansible-playbook ocp-project_simple.yml \
+#        -i "localhost ansible_connection=local" \
+#        -c local
+#        -e api_url=https://api.ocp.fi -e user=kube-admin \
+#        -e api_key=SMj1HWD9bJrEnvTR0JLR-EMGeeb_eDsaMnB-92-skno \
+#        -e project_name=ikke -e state=present
+
+- name: Ensure project is created/deleted.
+  hosts: all
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  tasks:
+
+    - name: Create/Delete a project
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: "{{ project_name }}"
