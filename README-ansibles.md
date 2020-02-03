@@ -16,7 +16,7 @@ This task is meant to make sure the remote RHEL device is set up properly for th
 
 This task sets up a new empty project into OpenShift.
 
-# Create OCP empty project
+# Create OCP project
 
 This task sets up a new project into OpenShift with:
 
