@@ -61,8 +61,9 @@ It is up to your imagination to come up with hacks you like to do. Here are some
 
 # Instructions
 
+* [List of available automation tasks in Tower](https://github.com/RedHatNordicsSA/iot-hack/blob/master/README-ansibles.md)
 * TBD [Description of OpenShift resources](./)
-* TBD [Description of controlling RHEL box](./rhel-device/README.md)
+* TBD [Description of controlling RHEL box](https://github.com/RedHatNordicsSA/iot-hack/blob/master/rhel-device/README-apu.md)
 * TBD [Description of moving containers from OCP to RHEL box](./)
 
 # External blogs for ideas and documentation
