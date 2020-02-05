@@ -23,6 +23,18 @@ This task sets up a new project into OpenShift with:
 * Admin user for the project
 * Set's default NetworkPolicy with firewall preventing accessing the project services for anyone else but OpenShift system internal services.
 
+# Install Node-Red on RHEL
+
+Installs Node-Red into RHEL box, along with:
+
+* Systemd control file, service enabled across reboots
+* Firewall opened
+* Node-Red flows stored into given directory outside of container.
+
+# Delete Node-Red from RHEL
+
+Removes Node-Red container from RHEL. Data is left behind.
+
 # Nuke OCP project
 
 This tasks deletes the given project from OpenShift, and anything that was created inside it. Beware, it really nukes it all!
