@@ -23,6 +23,19 @@ This task sets up a new project into OpenShift with:
 * Admin user for the project
 * Set's default NetworkPolicy with firewall preventing accessing the project services for anyone else but OpenShift system internal services.
 
+# Install 3Scale APIcast Gateway on RHEL
+
+Installs 3Scale API GW into RHEL box, along with:
+
+* Login to Red Hat registry
+* Systemd control file, service enabled across reboots
+* Firewall opened
+* APIGW secret from vault
+
+# Delete 3Scale APIcast Gateway from RHEL
+
+Removes 3Scale APIgw container from RHEL.
+
 # Install Node-Red on RHEL
 
 Installs Node-Red into RHEL box, along with:
