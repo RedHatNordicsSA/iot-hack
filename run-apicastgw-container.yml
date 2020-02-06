@@ -1,0 +1,26 @@
+---
+
+- name: ensure 3scale apicast gateway container is running
+  hosts: all
+  vars:
+    container_state: running
+    container_name: apicastgw
+    container_image: 'registry.redhat.io/3scale-amp2/apicast-gateway-rhel7:3scale2.7'
+    threescale_portal_endpoint: vault-me
+
+    container_run_args: >-
+      --rm
+      -p "8080:8080"
+      -e "THREESCALE_PORTAL_ENDPOINT={{ threescale_portal_endpoint }}"
+    container_firewall_ports:
+      - 8080/tcp
+
+  tasks:
+
+  - name: login to Red Hat registry
+    command: podman login -u "{{ registry_user }}" -p="{{ registry_pwd }}" registry.redhat.io
+
+  - name: ensure container state
+    tags: container
+    import_role:
+      name: podman_container_systemd
