@@ -11,6 +11,7 @@ This task is meant to make sure the remote RHEL device is set up properly for th
 * Create AWS config for Route53 services
 * Set up Dynamic DNS (DDNS) using Route53. This is to have public hostname for the box (FQDN) no matter where it roams.
 * Set up Cockpit web gui for server management. Also set cockpit with proper Let's Encrypt SSL certificates.
+* Register host to [Red Hat Insights](https://www.redhat.com/en/technologies/management/insights) service
 
 # Create OCP empty project
 

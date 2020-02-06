@@ -5,6 +5,7 @@
     pkgs:
     - python3
     - tmux
+    - insights-client
   package: name="{{ pkgs }}" state=present
 
 - name: install aws and let's encrypt tools

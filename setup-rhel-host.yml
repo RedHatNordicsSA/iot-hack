@@ -14,6 +14,9 @@
     - include_role:
         name: common-packages
 
+    - name: register to insights
+      command: insights-client --register
+
     - include_role:
         name: aws_config
 
