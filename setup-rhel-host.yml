@@ -39,3 +39,12 @@
       user:
         name: root
         password: ''
+
+    - name: enable and run required services
+      tags: services
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      loop:
+        - io.podman.socket
