@@ -8,9 +8,12 @@
     - insights-client
   package: name="{{ pkgs }}" state=present
 
-- name: install aws and let's encrypt tools
+- name: upgrade all packages to latest
+  package: name=* state=latest
+
+- name: install aws and let's encrypt tools latest versions
   vars:
     pkgs:
     - awscli
     - certbot-dns-route53
-  pip: name="{{ pkgs }}" state=present
+  pip: name="{{ pkgs }}" state=latest
