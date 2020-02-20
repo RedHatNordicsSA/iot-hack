@@ -26,13 +26,28 @@
     - include_role:
         name: cockpit
 
-    - name: create default user
+    - name: create admin user
       tags: users
       user:
         name: redhatter
         comment: Admin for the box
         groups: wheel
         password: "{{ rhel_box_admin_pw }}"
+
+    - name: set ssh access for admin user
+      tags: users
+      authorized_key:
+        user: redhatter
+        state: present
+        key: "{{ tower_pub_key }}"
+
+    - name: allow redhatter to sudo without password (for ansible)
+      tags: users
+      lineinfile:
+        state: present
+        path: /etc/sudoers
+        line: '%wheel	ALL=(ALL)	NOPASSWD: ALL'
+        regexp: '^%wheel ALL'
 
     - name: make sure root has no password
       tags: users
