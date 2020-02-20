@@ -26,3 +26,16 @@
     - include_role:
         name: cockpit
 
+    - name: create default user
+      tags: users
+      user:
+        name: redhatter
+        comment: Admin for the box
+        groups: wheel
+        password: "{{ rhel_box_admin_pw }}"
+
+    - name: make sure root has no password
+      tags: users
+      user:
+        name: root
+        password: ''
