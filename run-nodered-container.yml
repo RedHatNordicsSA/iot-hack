@@ -36,3 +36,31 @@
     tags: container
     import_role:
       name: podman_container_systemd
+
+  - name: password protect nodered
+    blockinfile:
+      path: "{{exported_container_volumes_basedir}}/{{ container_dir_config }}/settings.js"
+      marker: "// {mark} Ansible managed auth settings"
+      insertafter: '^module.exports =.*'
+      block: |
+        adminAuth: {
+          type: "credentials",
+          users: [
+              {
+                  username: "nradmin",
+                  password: "{{ vault_nodered_admin_pw }}",
+                  permissions: "*"
+              },
+              {
+                  username: "nruser",
+                  password: "{{ vault_nodered_user_pw }}",
+                  permissions: "read"
+              }
+          ]
+        },
+    when: container_state == "running"
+    notify: restart node-red
+
+  handlers:
+    - name: restart node-red
+      service: name=nodered-container-pod state=restarted
