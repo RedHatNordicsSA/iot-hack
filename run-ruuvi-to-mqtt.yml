@@ -1,0 +1,110 @@
+---
+
+- name: Run RuuviTag Sauna meter
+  hosts: all
+  vars:
+    state: present
+    ruuvi_mac: 'C3:47:44:54:1D:4F'
+    ruuvi_location: sauna
+    ruuvi_interval: 60
+    ruuvi_topic: 'ruuvitag/sauna'
+    ruuvi_mqtt: 'mqtt.ikenet'
+
+  tasks:
+
+    - name: disable bridge service when state not present
+      service:
+        name: ruuvi2mqtt
+        state: stopped
+        enabled: no
+      when: state != 'present'
+      ignore_errors: yes
+
+    - name: ensure user for the task
+      user:
+        state: '{{ state }}'
+        name: ruuvi
+        # system: yes <- needs to be commented as long sudo needed
+        remove: yes
+        home: /var/lib/ruuvi
+        comment: 'Ruuvitag BLE data to MQTT relay daemon'
+
+    - name: ensure python requirements at user homedir
+      become_user: ruuvi
+      become: yes
+      pip:
+        state: '{{ state }}'
+        name: '{{ item }}'
+        extra_args: --user
+        executable: pip3
+      when: state == 'present'
+      loop:
+        - paho-mqtt
+        - ruuvitag-sensor
+
+    - name: download ble-mqtt script
+      get_url:
+        url: https://raw.githubusercontent.com/ikke-t/ruuvitag-sensor/mqtt-example/examples/post_to_mqtt.py
+        dest: /usr/local/bin/ruuvi2mqtt
+        mode: '0755'
+        owner: root
+        group: root
+      when: state == 'present'
+
+    - name: ensure systemd service file
+      copy:
+        dest: /etc/systemd/system/ruuvi2mqtt.service
+        content: |
+          [Unit]
+          Description = Ruuvitag to MQTT bridge
+          After = bluetooth.target network.target network-online.target
+          Requires = bluetooth.target network-online.target
+
+          [Service]
+          ExecStart = /usr/local/bin/ruuvi2mqtt --mac "{{ ruuvi_mac }}" -b "{{ ruuvi_mqtt }}" -t "{{ ruuvi_topic }}" -i "{{ ruuvi_interval }}" -l "{{ ruuvi_location }}"
+          Restart = on-failure
+          StartLimitInterval = 10
+          StartLimitBurst = 10
+          User = ruuvi
+
+          [Install]
+          WantedBy = multi-user.target
+      when: state == 'present'
+      register: systemd_file
+
+    # need to have sudo, find out way out of it.
+    - name: ruuvitag-sensor needs sudo, allow for ruuvi user
+      lineinfile:
+        path: /etc/sudoers.d/ruuvi
+        line: 'ruuvi ALL=(root) NOPASSWD: /usr/bin/hciconfig, /usr/bin/hcitool, /usr/bin/hcidump'
+        validate: /usr/sbin/visudo -cf %s
+        create: yes
+      when: state == 'present'
+
+    - name: ensure systemd knows the new service
+      systemd:
+        daemon_reload: yes
+      when: systemd_file.changed 
+
+    - name: enable bridge service
+      service:
+        name: ruuvi2mqtt
+        state: started
+        enabled: true
+      when: state == 'present'
+
+    - name: cleanup files when state not present
+      file:
+        state: absent
+        dest: "{{ item }}"
+      when: state != 'present'
+      register: cleanup
+      loop:
+        - /usr/local/bin/ruuvi2mqtt
+        - /etc/systemd/system/ruuvi2mqtt.service
+        - /etc/sudoers.d/ruuvi
+
+    - name: ensure systemd knows the service is gone when state not present
+      systemd:
+        daemon_reload: yes
+      when: cleanup.changed 
