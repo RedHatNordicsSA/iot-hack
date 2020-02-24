@@ -37,6 +37,16 @@ Installs 3Scale API GW into RHEL box, along with:
 
 Removes 3Scale APIgw container from RHEL.
 
+# Install MQTT broker on RHEL
+
+Installs Mosquitto broker into RHEL box, along with:
+
+* Systemd control file, service enabled across reboots
+
+# Delete MQTT broker from RHEL
+
+Removes Mosquitto broker container from RHEL. Data is left behind.
+
 # Install Node-Red on RHEL
 
 Installs Node-Red into RHEL box, along with:
