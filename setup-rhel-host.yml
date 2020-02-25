@@ -57,7 +57,7 @@
 
     # https://github.com/containers/libpod/issues/5316
     - name: enable bridge firewall module at boot
-      template:
+      copy:
         dest: /etc/modules-load.d/podman.conf
         content: 'br_netfilter'
 
