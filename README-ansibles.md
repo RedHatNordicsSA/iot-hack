@@ -67,3 +67,14 @@ This tasks deletes the given project from OpenShift, and anything that was creat
 
 This task simply test the ssh connectivity to all hosts in inventory. If it fails, there is problem connecting to remote hosts.
 
+# Install Zigbee to MQTT relay on RHEL
+
+Installs an utility that realys Zigbee to MQTT protocol into RHEL box, along with:
+
+* Systemd control file, service enabled across reboots
+* Configures the realy to connect to local MQTT broker on RHEL.
+
+# Delete Zigbee to MQTT relay from RHEL
+
+Removes zigbee2mqtt container from RHEL. Data is left behind.
+

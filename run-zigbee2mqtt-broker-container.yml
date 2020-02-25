@@ -1,0 +1,59 @@
+---
+
+- name: ensure Zigbee to MQTT service container is running
+  hosts: all
+  vars:
+    container_state: running
+    container_name: zigbee2mqtt
+    container_image: 'koenkk/zigbee2mqtt:latest'
+    container_dir_data: zigbee2mqtt-data
+    container_dir_owner: 'root'
+    container_dir_group: root
+    container_run_args: >-
+      --rm
+      -v "{{exported_container_volumes_basedir}}/{{ container_dir_data }}:/app/data:Z"
+      --device=/dev/ttyACM0
+      -e TZ=Europe/Helsinki
+      -v /run/udev:/run/udev:ro
+      --privileged=true
+    container_firewall_ports:
+
+  tasks:
+
+  - name: ensure container files mount point on host
+    tags: mount
+    file:
+      path: "{{exported_container_volumes_basedir}}/{{ item }}"
+      owner: "{{ container_dir_owner }}"
+      group: "{{ container_dir_group }}"
+      state: directory
+      recurse: yes
+    with_items:
+      - "{{ container_dir_data }}"
+
+  - name: check if zigbee2mqtt.conf exists
+    stat:
+      path: "{{exported_container_volumes_basedir}}/{{ container_dir_data }}/configuration.yaml"
+    register: conf
+
+  - name: ensure we have config for zigbee2mqtt
+    get_url:
+      url: https://raw.githubusercontent.com/Koenkk/zigbee2mqtt/master/data/configuration.yaml
+      dest: "{{exported_container_volumes_basedir}}/{{ container_dir_data }}/configuration.yaml"
+      owner: "{{ container_dir_owner }}"
+      group: "{{ container_dir_group }}"
+      mode: '0644'
+    when: conf.stat.exists == False and container_state == 'running'
+
+  - name: configure mqtt server for zigbee2mqtt
+    lineinfile:
+      state: present
+      path: "{{exported_container_volumes_basedir}}/{{ container_dir_data }}/configuration.yaml"
+      line: "  server: 'mqtt://10.88.0.1'"
+      regexp: '^\s*server: .*'
+    when: conf.stat.exists == False and container_state == 'running'
+
+  - name: ensure container state
+    tags: container
+    import_role:
+      name: podman_container_systemd
