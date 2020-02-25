@@ -55,6 +55,15 @@
         name: root
         password: ''
 
+    # https://github.com/containers/libpod/issues/5316
+    - name: enable bridge firewall module at boot
+      template:
+        dest: /etc/modules-load.d/podman.conf
+        content: 'br_netfilter'
+
+    - name: enable bridge firewall module now
+      command: modprobe br_netfilter
+
     - name: enable and run required services
       tags: services
       service:
