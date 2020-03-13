@@ -1,16 +1,21 @@
 ---
 
-- name: Run RuuviTag Sauna meter
+- name: Run RuuviTag temp/humiditiy/gyro sensor data to mqtt relay
   hosts: all
   vars:
     state: present
-    ruuvi_mac: 'C3:47:44:54:1D:4F'
-    ruuvi_location: sauna
+    ruuvi_mac: 'D1:8E:AC:68:FD:2E'
+    ruuvi_location: iot_hack
     ruuvi_interval: 60
-    ruuvi_topic: 'ruuvitag/sauna'
-    ruuvi_mqtt: 'mqtt.ikenet'
+    ruuvi_topic: 'ruuvitag/iot_hack'
+    ruuvi_mqtt: 'localhost'
 
   tasks:
+
+    - name: ensure host has bluetooth tools
+      package:
+        name: bluez
+        state: present
 
     - name: disable bridge service when state not present
       service:
