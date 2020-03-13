@@ -20,7 +20,10 @@ We have few devices what to connect over zigbee radio connection. The list conta
     mosquitto_pub -t zigbee2mqtt/0x90fd9ffffede0f32/set -m '{ "state": "OFF"}'
     mosquitto_pub -t zigbee2mqtt/0x90fd9ffffede0f32/set -m '{ "brightness": "10"}' # 0-255
     ```
-
+    example status
+    ```
+    zigbee2mqtt/0x90fd9ffffede0f32 {"state":"OFF","brightness":125,"update_available":true}
+    ```
 
 ## Xiaomi
 
