@@ -1,0 +1,2 @@
+vault_ocp_kafka_bridge_endpoint: kafka-bridge.apps.ocphost:443/topics/test-topic?ignoreResponseBody=true
+vault_mqtt_endpoint: ruuvitag/iot_hack?brokerUrl=tcp://edge.host:1883

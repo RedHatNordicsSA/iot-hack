@@ -1,0 +1,3 @@
+- src: https://github.com/ikke-t/podman-container-systemd.git
+  version: master
+  name: podman_container_systemd
