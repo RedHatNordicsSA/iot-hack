@@ -5,7 +5,7 @@ This doc describes Ansible automation implemented into Tower for the project. Th
 ## Local setup
 
 ```
-	ansible-galaxy install -r requirements.yaml
+ansible-galaxy install -r requirements.yaml
 ```
 
 Create inventory file and override vault.yml with your own.
@@ -22,22 +22,23 @@ ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 ```
 
 ```
-	ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password
+ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password
 ```
 
 Removal:
 
 ```
-	ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password --extra-var container_state=absent
+ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password --extra-var container_state=absent
 ```
 
 
 Check out stuff on host:
 
 ```
-		systemctl status mqtt-to-kafka-bridge-container-pod.service
-		journalctl -u mqtt-to-kafka-bridge-container-pod.service
+systemctl status mqtt-to-kafka-bridge-container-pod.service
+journalctl -u mqtt-to-kafka-bridge-container-pod.service
 ```
+
 # Setup RHEL Basics
 
 This task is meant to make sure the remote RHEL device is set up properly for the exercise. It runs [setup-rhel-host playbook](https://github.com/RedHatNordicsSA/iot-hack/blob/master/setup-rhel-host.yml'). The following tasks are done:
