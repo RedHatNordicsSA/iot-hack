@@ -17,7 +17,7 @@ The task depend of course on the audience. During the first event we utilise the
  * Any other bluetooth devices nearby?
  * WLAN network
 
-<TBD, pic here about the devices on the table>
+![peripherals](pics/peripherals.jpg)
 
 # Goal of the day
 
