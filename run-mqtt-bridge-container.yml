@@ -1,0 +1,24 @@
+---
+- name: ensure fuse mqtt to kafka container is running
+  hosts: all
+  vars:
+    container_state: running
+    container_name: mqtt-to-kafka-bridge
+    container_image: 'quay.io/tfriman/iot-demo:native'
+    container_dir_group: root
+    kafka_bridge_endpoint: "{{ ocp_kafka_bridge_endpoint }}"
+    local_mqtt_endpoint: "{{ mqtt_endpoint }}"
+
+    container_run_args: >-
+      --rm
+      --name "{{ container_name }}"
+      -e "kafka.config={{ kafka_bridge_endpoint }}"
+      -e "mqtt.config={{ local_mqtt_endpoint }}"
+
+  tasks:
+
+  - name: ensure container state
+    tags: container
+    import_role:
+      name: podman_container_systemd
+    become: yes

@@ -1,3 +1,6 @@
 cockpit_fqdn: apu.konttikoulu.fi
 letsencrypt_email: "{{ vault_letsencrypt_email }}"
 rhel_box_admin_pw: "{{ vault_rhel_box_admin_pw }}"
+
+ocp_kafka_bridge_endpoint: "{{ vault_ocp_kafka_bridge_endpoint }}"
+mqtt_endpoint: "{{ vault_mqtt_endpoint }}"

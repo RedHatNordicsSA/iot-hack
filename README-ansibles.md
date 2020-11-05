@@ -2,9 +2,46 @@
 
 This doc describes Ansible automation implemented into Tower for the project. There is vault file used in the project for the secrets, and some of the secrets are in Tower instance inventories, also vault encrypted. The following list of templates is available at the Tower:
 
+## Local setup
+
+```
+ansible-galaxy install -r requirements.yaml
+```
+
+Create inventory file and override vault.yml with your own.
+
+Example inventory file:
+
+```
+foo.host.invalid
+
+[all:vars]
+ansible_user=foouser
+ansible_ssh_private_key_file=~/.ssh/id_rsa
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+```
+
+```
+ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password
+```
+
+Removal:
+
+```
+ansible-playbook -i inventory  run-mqtt-bridge-container.yml --vault-password-file ~/.vault_password --extra-var container_state=absent
+```
+
+
+Check out stuff on host:
+
+```
+systemctl status mqtt-to-kafka-bridge-container-pod.service
+journalctl -u mqtt-to-kafka-bridge-container-pod.service
+```
+
 # Setup RHEL Basics
 
-This task is meant to make sure the remote RHEL device is set up properly for the exercise. It runs [setup-rhel-host playbook](https://github.com/RedHatNordicsSA/iot-hack/blob/master/setup-rhel-host.yml). The following tasks are done:
+This task is meant to make sure the remote RHEL device is set up properly for the exercise. It runs [setup-rhel-host playbook](https://github.com/RedHatNordicsSA/iot-hack/blob/master/setup-rhel-host.yml'). The following tasks are done:
 
 * Subscribe Linux to Red Hat services
 * Install basic set of software we need
@@ -77,4 +114,3 @@ Installs an utility that realys Zigbee to MQTT protocol into RHEL box, along wit
 # Delete Zigbee to MQTT relay from RHEL
 
 Removes zigbee2mqtt container from RHEL. Data is left behind.
-
