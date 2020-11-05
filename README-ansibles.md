@@ -5,7 +5,8 @@ This doc describes Ansible automation implemented into Tower for the project. Th
 ## Local setup
 
 ```
-ansible-galaxy install -r requirements.yaml
+ansible-galaxy install -r roles/requirements.yaml -p roles
+ansible-galaxy install -r collections/requirements.yaml -p collections
 ```
 
 Create inventory file and override vault.yml with your own.

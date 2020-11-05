@@ -1,0 +1,5 @@
+---
+
+collections:
+  - name: containers.podman
+    source: https://galaxy.ansible.com
