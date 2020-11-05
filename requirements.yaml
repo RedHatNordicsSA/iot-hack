@@ -6,4 +6,5 @@ roles:
     name: podman_container_systemd
 
 collections:
-  - containers.podman
+  - name: containers.podman
+    source: https://galaxy.ansible.com
