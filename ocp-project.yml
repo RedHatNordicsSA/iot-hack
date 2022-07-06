@@ -111,3 +111,52 @@
             apiGroup: rbac.authorization.k8s.io
             kind: ClusterRole
             name: admin
+
+    - name: Set default quotas
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          kind: ResourceQuota
+          apiVersion: v1
+          metadata:
+            name: "{{ project_name }}-quota"
+          spec:
+            hard:
+              pods: 10
+              requests.cpu: 4000m
+              requests.memory: 8Gi
+              resourcequotas: 1
+              requests.storage: 50Gi
+              persistentvolumeclaims: 5
+
+   - name: Set default limits
+      k8s:
+        state: "{{ state }}"
+        host: "{{ api_url }}"
+        username: "{{ user }}"
+        api_key: "{{ api_key }}"
+        definition:
+          kind: LimitRange
+          apiVersion: v1
+          metadata:
+            name: "{{ project_name }}-limits"
+            creationTimestamp: null
+          spec:
+            limits:
+              -
+                type: Container
+                max:
+                  cpu: 4000m
+                  memory: 1024Mi
+                min:
+                  cpu: 10m
+                  memory: 5Mi
+                default:
+                  cpu: 4000m
+                  memory: 1024Mi
+                defaultRequest:
+                  cpu: 100m
+                  memory: 512Mi
